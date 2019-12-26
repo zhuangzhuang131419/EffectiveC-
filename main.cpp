@@ -1,14 +1,21 @@
 #include <iostream>
-#include "44/SquareMatrixBad.cpp"
+
 #include "33/Derived33.cpp"
+#include "39/Student.cpp"
+#include "39/Empty.cpp"
+#include "44/SquareMatrixBad.cpp"
 
 void Task33();
+void Task39();
+void eat(const Person& p);
+void study(const Student& s);
 void Task44();
 
 int main() {
     std::cout << "Hello, World!" << std::endl;
 
-    Task33();
+    // Task33();
+    Task39();
     // Task44();
     return 0;
 
@@ -38,6 +45,28 @@ void Task33() {
     d2->mf1();
     // d2->mf1(0)
     // 被Derived内的mf1()函数给遮掩了
+}
+void Task39() {
+    Person p;
+    Student s;
+    eat(p);
+    // eat(s);  编译错误
+    // 如果classes之间的继承关系是private, 编译器不会自动将Student转换成Person
+    // 由Person继承来的所有成员，在student中都会变成private属性
+
+    std::cout << sizeof(int) << std::endl;
+    std::cout << "holds an int 1: " << sizeof(HoldsAnInt1) << std::endl;
+    std::cout << "holds an int 2: " << sizeof(HoldsAnInt2) << std::endl;
+    // output:
+    // holds an int 1: 8
+    // holds an int 2: 4
+    // 通常C++会默默暗查一个char到空对象中，再加上alignment的需求
+}
+void eat(const Person& p) {
+    std::cout << "eat" << std::endl;
+}
+void study(const Student& s) {
+    std::cout << "study" << std::endl;
 }
 
 
