@@ -3,19 +3,22 @@
 #include "33/Derived33.cpp"
 #include "39/Student.cpp"
 #include "39/Empty.cpp"
+#include "43/Company.cpp"
 #include "44/SquareMatrixBad.cpp"
 
 void Task33();
 void Task39();
 void eat(const Person& p);
 void study(const Student& s);
+void Task43();
 void Task44();
 
 int main() {
     std::cout << "Hello, World!" << std::endl;
 
     // Task33();
-    Task39();
+    // Task39();
+    // Task43();
     // Task44();
     return 0;
 
@@ -69,6 +72,13 @@ void study(const Student& s) {
     std::cout << "study" << std::endl;
 }
 
+void Task43() {
+    LoggingMsgSender1<CompanyZ> zMsgSender1;
+    // LoggingMsgSender2<CompanyZ> zMsgSender2; 编译错误
+    // LoggingMsgSender3<CompanyZ> zMsgSender3; 编译错误
+    MsgInfo msgData;
+    // zMsgSender1.sendClearMsg(msgData); 无法通过编译
+}
 
 void Task44() {
     SquareMatrixBad<double, 5> sm1;
