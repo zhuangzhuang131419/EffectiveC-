@@ -1,10 +1,9 @@
 #include <iostream>
-
 #include "33/Derived33.cpp"
 #include "39/Student.cpp"
 #include "39/Empty.cpp"
 #include "43/Company.cpp"
-#include "44/SquareMatrixBad.cpp"
+#include "44/SquareMatrix.cpp"
 
 void Task33();
 void Task39();
