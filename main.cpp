@@ -4,6 +4,7 @@
 #include "39/Empty.cpp"
 #include "43/Company.cpp"
 #include "44/SquareMatrix.cpp"
+#include "45/SmartPtr.cpp"
 
 void Task33();
 void Task39();
@@ -11,6 +12,7 @@ void eat(const Person& p);
 void study(const Student& s);
 void Task43();
 void Task44();
+void Task45();
 
 int main() {
     std::cout << "Hello, World!" << std::endl;
@@ -19,6 +21,8 @@ int main() {
     // Task39();
     // Task43();
     // Task44();
+    Task45();
+
     return 0;
 
 
@@ -78,7 +82,6 @@ void Task43() {
     MsgInfo msgData;
     // zMsgSender1.sendClearMsg(msgData); 无法通过编译
 }
-
 void Task44() {
     SquareMatrixBad<double, 5> sm1;
     sm1.invert();
@@ -90,4 +93,13 @@ void Task44() {
 
 
     return;
+}
+void Task45() {
+    // SmartPtr<Top> pt1 = SmartPtr<Middle>(new Middle);
+    // SmartPtr<Top> pt2 = SmartPtr<Bottom>(new Bottom);
+    // SmartPtr<const Top> pct2 = pt1;
+    // 编译错误，不存在此种隐式转换
+    shared_ptr1<Top> pt1 = shared_ptr1<Middle>(new Middle);
+    shared_ptr1<Middle> pt2 = shared_ptr1<Bottom>(new Bottom);
+    shared_ptr1<const Top> pct2 = pt1;
 }
