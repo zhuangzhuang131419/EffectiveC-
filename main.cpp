@@ -1,5 +1,6 @@
 #include <iostream>
 #include "24/Rational24.cpp"
+#include "25/Widget25.cpp"
 #include "33/Derived33.cpp"
 #include "39/Student.cpp"
 #include "39/Empty.cpp"
@@ -8,6 +9,9 @@
 #include "45/SmartPtr.cpp"
 
 void Task24();
+void Task25();
+template <typename T>
+void doSwap(T& obj1, T& obj2);
 void Task33();
 void Task39();
 void eat(const Person& p);
@@ -19,12 +23,13 @@ void Task45();
 int main() {
     std::cout << "Hello, World!" << std::endl;
 
-    Task24();
+    // Task24();
+    Task25();
     // Task33();
     // Task39();
     // Task43();
     // Task44();
-    Task45();
+    // Task45();
 
     return 0;
 
@@ -43,6 +48,28 @@ void Task24() {
     Rational1 oneEighth1(1, 8);
     Rational1 oneHalf1(1, 2);
     Rational1 result1 = 2 * oneHalf1;
+}
+void Task25() {
+    Widget1 w1;
+    Widget1 w2;
+    doSwap(w1, w2);
+
+    Widget_T<int> widgetT1;
+    Widget_T<int> widgetT2;
+    doSwap(widgetT1, widgetT2);
+
+    WidgetStuff::Widget_T1<int> widgetT11;
+    WidgetStuff::Widget_T1<int> widgetT12;
+    doSwap(widgetT11, widgetT12);
+
+
+
+}
+template <typename T>
+void doSwap(T& obj1, T& obj2) {
+    using std::swap;
+    swap(obj1, obj2);
+    // std::swap(obj1, obj2) 编译通过 但是无法找到写在WidgetBuffer中的了
 }
 void Task33() {
     Derived1* d = new Derived1;
