@@ -1,4 +1,5 @@
 #include <iostream>
+#include "24/Rational24.cpp"
 #include "33/Derived33.cpp"
 #include "39/Student.cpp"
 #include "39/Empty.cpp"
@@ -6,6 +7,7 @@
 #include "44/SquareMatrix.cpp"
 #include "45/SmartPtr.cpp"
 
+void Task24();
 void Task33();
 void Task39();
 void eat(const Person& p);
@@ -17,6 +19,7 @@ void Task45();
 int main() {
     std::cout << "Hello, World!" << std::endl;
 
+    Task24();
     // Task33();
     // Task39();
     // Task43();
@@ -29,6 +32,18 @@ int main() {
 
 }
 
+void Task24() {
+    RationalBad oneEighth(1, 8);
+    RationalBad oneHalf(1, 2);
+    RationalBad result = oneHalf * oneEighth;
+    result = result * oneEighth;
+    result = oneHalf * 2;
+    // result = 2 * oneHalf; 编译错误
+
+    Rational1 oneEighth1(1, 8);
+    Rational1 oneHalf1(1, 2);
+    Rational1 result1 = 2 * oneHalf1;
+}
 void Task33() {
     Derived1* d = new Derived1;
     d->mf1();
