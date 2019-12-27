@@ -27,10 +27,10 @@ public:
     int denominator() const {
         return 0;
     }
-
-    friend Rational1 operator * (const Rational1& lhs, const Rational1& rhs) {
-        return {lhs.numerator() * rhs.numerator(), lhs.denominator() * rhs.denominator()};
-    }
 };
+
+inline Rational1 operator* (const Rational1& lhs, const Rational1& rhs) {
+    return {lhs.numerator() * rhs.numerator(), lhs.denominator() * rhs.denominator()};
+}
 
 

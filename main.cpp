@@ -7,6 +7,7 @@
 #include "43/Company.cpp"
 #include "44/SquareMatrix.cpp"
 #include "45/SmartPtr.cpp"
+#include "46/Rational46.cpp"
 
 void Task24();
 void Task25();
@@ -19,17 +20,19 @@ void study(const Student& s);
 void Task43();
 void Task44();
 void Task45();
+void Task46();
 
 int main() {
     std::cout << "Hello, World!" << std::endl;
 
     // Task24();
-    Task25();
+    // Task25();
     // Task33();
     // Task39();
     // Task43();
     // Task44();
     // Task45();
+    Task46();
 
     return 0;
 
@@ -47,11 +50,11 @@ void Task24() {
 
     Rational1 oneEighth1(1, 8);
     Rational1 oneHalf1(1, 2);
-    Rational1 result1 = 2 * oneHalf1;
+    // Rational1 result1 = 2 * oneHalf1;
 }
 void Task25() {
-    Widget1 w1;
-    Widget1 w2;
+    Widget1 w1{};
+    Widget1 w2{};
     doSwap(w1, w2);
 
     Widget_T<int> widgetT1;
@@ -72,7 +75,7 @@ void doSwap(T& obj1, T& obj2) {
     // std::swap(obj1, obj2) 编译通过 但是无法找到写在WidgetBuffer中的了
 }
 void Task33() {
-    Derived1* d = new Derived1;
+    auto* d = new Derived1;
     d->mf1();
     d->mf1(0);
     // 被Derived内的mf1()函数给遮掩了
@@ -89,7 +92,7 @@ void Task33() {
 //    Derived mf4()
 //    Base mf2()
 
-    Derived2* d2 = new Derived2;
+    auto* d2 = new Derived2;
     d2->mf1();
     // d2->mf1(0)
     // 被Derived内的mf1()函数给遮掩了
@@ -130,11 +133,6 @@ void Task44() {
 
     SquareMatrixBad<double, 10> sm2;
     sm2.invert();
-    // 会具现化出两份invert 但除了常量5 10，两个函数的其他部分完全相同。这便是template引起的代码膨胀
-
-
-
-    return;
 }
 void Task45() {
     // SmartPtr<Top> pt1 = SmartPtr<Middle>(new Middle);
@@ -144,4 +142,15 @@ void Task45() {
     shared_ptr1<Top> pt1 = shared_ptr1<Middle>(new Middle);
     shared_ptr1<Middle> pt2 = shared_ptr1<Bottom>(new Bottom);
     shared_ptr1<const Top> pct2 = pt1;
+}
+void Task46() {
+    Rational2<int> oneHalf(1, 2);
+    // Rational2<int> result = oneHalf * 2; 编译无法通过，模板化之后与之前的不同
+    // template实参推导过程中从不讲隐式类型转换函数纳入考虑
+
+    Rational3<int> onethird(1, 3);
+    std::cout << onethird.numerator() << ", " << onethird.denominator() << std::endl;
+    Rational3<int> result = onethird * 4;
+    Rational3<int> result1 = 3 * onethird;
+    std::cout << result.numerator() << ", " << result.denominator() << std::endl;
 }
