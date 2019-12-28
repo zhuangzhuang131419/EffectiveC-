@@ -1,4 +1,5 @@
 #include <iostream>
+#include <list>
 #include "24/Rational24.cpp"
 #include "25/Widget25.cpp"
 #include "33/Derived33.cpp"
@@ -8,6 +9,8 @@
 #include "44/SquareMatrix.cpp"
 #include "45/SmartPtr.cpp"
 #include "46/Rational46.cpp"
+#include "48/advance48.cpp"
+#include "48/Factorial.cpp"
 
 void Task24();
 void Task25();
@@ -21,6 +24,7 @@ void Task43();
 void Task44();
 void Task45();
 void Task46();
+void Task48();
 
 int main() {
     std::cout << "Hello, World!" << std::endl;
@@ -33,6 +37,7 @@ int main() {
     // Task44();
     // Task45();
     // Task46();
+    Task48();
 
     return 0;
 
@@ -153,4 +158,10 @@ void Task46() {
     Rational3<int> result = onethird * 4;
     Rational3<int> result1 = 3 * onethird;
     std::cout << result.numerator() << ", " << result.denominator() << std::endl;
+}
+void Task48() {
+    std::list<int>::iterator iter;
+    // advanceBad(iter, 10); 运行报错，list<int>::iterator是bidirectional迭代器，并不支持+=
+    std::cout << Factorial<5>::value << std::endl;
+    std::cout << Factorial<10>::value << std::endl;
 }
