@@ -1,5 +1,6 @@
 #include <iostream>
 #include <list>
+#include "03/TextBlock.cpp"
 #include "24/Rational24.cpp"
 #include "25/Widget25.cpp"
 #include "33/Derived33.cpp"
@@ -12,6 +13,7 @@
 #include "48/advance48.cpp"
 #include "48/Factorial.cpp"
 
+void Task03();
 void Task24();
 void Task25();
 template <typename T>
@@ -27,8 +29,8 @@ void Task46();
 void Task48();
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
 
+    Task03();
     // Task24();
     // Task25();
     // Task33();
@@ -37,11 +39,27 @@ int main() {
     // Task44();
     // Task45();
     // Task46();
-    Task48();
-
+    // Task48();
+    // std::cout << "Hello, World!" << std::endl;
     return 0;
+}
 
-
+void Task03() {
+    char greeting[] = "Hello";
+    char* p = greeting;             // non-const pointer, non-const data
+    const char* p1 = greeting;      // non-const pointer, const data
+    char* const p2 = greeting;      // const pointer, non-const data
+    const char* const p3 = greeting;// const pointer, const data
+    p1 = "hi";
+    // p2 = "hi"; 编译不通过
+    // p3 = "hi";
+    TextBlock tb("Hello");
+    std::cout << tb[0] << std::endl;
+    tb[0] = 'a';
+    std::cout << tb[0] << std::endl;
+    const TextBlock ctb("World");
+    // ctb[0] = 'a'; ctb对应的是const的重载
+    std::cout << ctb[0] << std::endl;
 
 }
 
