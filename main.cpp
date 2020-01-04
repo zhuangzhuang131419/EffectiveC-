@@ -1,6 +1,8 @@
 #include <iostream>
 #include <list>
 #include "03/TextBlock.cpp"
+#include "04/ABEntry.cpp"
+#include "04/FileSystem.cpp"
 #include "24/Rational24.cpp"
 #include "25/Widget25.cpp"
 #include "33/Derived33.cpp"
@@ -14,6 +16,7 @@
 #include "48/Factorial.cpp"
 
 void Task03();
+void Task04();
 void Task24();
 void Task25();
 template <typename T>
@@ -30,7 +33,9 @@ void Task48();
 
 int main() {
 
-    Task03();
+    // Task03();
+    Task04();
+
     // Task24();
     // Task25();
     // Task33();
@@ -40,9 +45,18 @@ int main() {
     // Task45();
     // Task46();
     // Task48();
-    // std::cout << "Hello, World!" << std::endl;
+    std::cout << "Hello, World!" << std::endl;
     return 0;
 }
+
+
+
+void Task04() {
+    ABEntry a("Hi", "Hello");
+    std::cout << Directory::tempDir().numDisks() << std::endl;
+}
+
+
 
 void Task03() {
     char greeting[] = "Hello";
@@ -62,7 +76,6 @@ void Task03() {
     std::cout << ctb[0] << std::endl;
 
 }
-
 void Task24() {
     RationalBad oneEighth(1, 8);
     RationalBad oneHalf(1, 2);
